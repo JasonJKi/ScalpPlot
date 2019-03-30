@@ -44,14 +44,15 @@ headPlot.setMap();
 ```
 
 Set plot handle for easy control/customizability
-'''
+```
 plotHandle1 = subplot(1,6,1)
 plotHandle2 = subplot(1,6,2)
 plotHandle3 = subplot(1,6,3)
 .
 .
 .
-'''
+```
+
 
 Ex 1. Draw the default headplot in the first plot.
 ```
