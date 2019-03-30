@@ -33,7 +33,7 @@ from the link in Green (Clone or Download).
 2) In matlab command window.
 ```
 >> cd HeadPlot
->> setup install save
+>> setup install save # save argument will permanently add ScalPlot dir and it's subdirectories to path.
 ```
 
 ### Usage
