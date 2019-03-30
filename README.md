@@ -22,13 +22,15 @@ plot tool for both researchers and developers. All unnecessary depedenecis have 
 - Linux/Windows/Mac
 - MATLAB
 
-1) In OS command prompt.
+1) On any Operating System's command prompt.
 ```
 git clone https://github.com/JasonJKi/HeadPlot.git
 cd HeadPlot
 ```
+or download 
+from the link in Green (Clone or Download).
 
-2) In matlab
+2) In matlab command window.
 ```
 setup install save
 ```
