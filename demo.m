@@ -19,41 +19,41 @@ plotHandle5 = subplot(2,3,5);
 plotHandle6 = subplot(2,3,6); 
 
 % Instantiate the HeadPlot object. 
-headPlot = HeadPlot(locationFilePath);
-headPlot.setMap();
+scalpPlot = ScalpPlot(locationFilePath);
+scalpPlot.setMap();
 
 % Ex 1. Draw the default headplot in the first plot.
-headPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
-headPlot.draw(A); % Draw headplot.
+scalpPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
+scalpPlot.draw(A); % Draw headplot.
 title('Ex 1: default headplot')
 
 % Ex 2. Head plot with contours.
-headPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
-headPlot.draw(A);
-headPlot.drawHeadContour();
+scalpPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
+scalpPlot.draw(A);
+scalpPlot.drawHeadContour();
 title('Ex 2: w/ contour')
 
 % Ex 3. Head plot with value of source points.
-headPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
-headPlot.draw(A);
-headPlot.drawSourcePoints();
+scalpPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
+scalpPlot.draw(A);
+scalpPlot.drawSourcePoints();
 title('Ex 3: w/ source location')
 
 % Ex 4. Head plot with specified values on selective source points.
-headPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
-headPlot.draw(A);
+scalpPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
+scalpPlot.draw(A);
 
 symbolStr = '^';
 sourceIndex = (rand(1,96) > .5);
-markerHandle1 = headPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
-markerHandle2 = headPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
+markerHandle1 = scalpPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
+markerHandle2 = scalpPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
 handles = [markerHandle1 markerHandle2];
-headPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
+scalpPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')
 
 % Ex5. Head plot with specified colormap and axis.
-headPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
-headPlot.draw(A);
+scalpPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
+scalpPlot.draw(A);
 
 colorMapVal = flipud(hot); % Assign colormap scale
 
@@ -62,8 +62,8 @@ colorAxisRange = [minVal maxVal];
 cAxis = [minVal, mean(A), maxVal];
 cAxisTickLabel = {num2str(minVal, '%0.3f'), '\muV', num2str(maxVal,'%0.3f')};
 
-headPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
-headPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
+scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
+scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 
 title('Ex 5: w/ colorbar and alternate color scale')
 

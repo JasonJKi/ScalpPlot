@@ -1,6 +1,6 @@
-classdef HeadPlot < handle
-    % HeadPlot creates spatial map of scalp recorded events such as
-    % EEG or MEG. Ex: headPlotObj = HeadPlot(locationFilepath)
+classdef ScalpPlot < handle
+    % ScalpPlot creates spatial map of scalp recorded events such as
+    % EEG or MEG. Ex: headPlotObj = ScalpPlot(locationFilepath)
     
     properties
         values
@@ -16,9 +16,9 @@ classdef HeadPlot < handle
 
     methods
         
-        function this = HeadPlot(locationFilepath)
-            % HeadPlot creates spatial map of scalp recorded events such as
-            % EEG or MEG. Ex: headPlotObj = HeadPlot(locationFilepath)
+        function this = ScalpPlot(locationFilepath)
+            % ScalpPlot creates spatial map of scalp recorded events such as
+            % EEG or MEG. Ex: scalpPlotObj = ScalpPlot(locationFilepath)
             
             % Read location file for channel position relative to the scalp.
             [tmpeloc, labels, theta, radius, channelIndex] = readLocationFile(locationFilepath);
@@ -36,7 +36,7 @@ classdef HeadPlot < handle
             [xPos, yPos, radius] = getLocationValues(this);
             
             % Resize the location values to fit the plot and head radius.
-            [xPos, yPos] = this.fitHeadPlotToAxes(xPos, yPos, radius, this.headRadius);
+            [xPos, yPos] = this.fitScalpPlotToAxes(xPos, yPos, radius, this.headRadius);
             this.LocationInfo.xPos = xPos;
             this.LocationInfo.yPos = yPos;
         end
@@ -64,7 +64,7 @@ classdef HeadPlot < handle
             channelIndex = this.LocationInfo.channelIndex ;
         end
         
-        function setHeadPlotGridPoints(this, x, y, z, delta)
+        function setScalpPlotGridPoints(this, x, y, z, delta)
             this.GridPoints.x = x;
             this.GridPoints.y = y;
             this.GridPoints.z = z;
@@ -129,7 +129,7 @@ classdef HeadPlot < handle
                 yPos = this.LocationInfo.yPos;
             
                 [x, y, z, delta] = this.createHeadSurfaceMap(xPos, yPos, values, this.headRadius);
-                setHeadPlotGridPoints(this, x, y, z, delta);        
+                setScalpPlotGridPoints(this, x, y, z, delta);        
         end            
         
         function drawHeadContour(this, values)
@@ -205,7 +205,7 @@ classdef HeadPlot < handle
     end
     
     methods (Static)
-        function [xPos, yPos, radius, resizRatio, maxLocRadius] = fitHeadPlotToAxes(xPos,yPos, radius, radiusMax)
+        function [xPos, yPos, radius, resizRatio, maxLocRadius] = fitScalpPlotToAxes(xPos,yPos, radius, radiusMax)
             maxLocRadius = min(1.0,max(radius)*1.02);            % default: just outside the outermost electrode location
             maxLocRadius = max(maxLocRadius,0.5);
             
@@ -320,7 +320,7 @@ classdef HeadPlot < handle
             plot3(-EarX*sf,EarY*sf,2*ones(size(EarY)),'color',HEADCOLOR,'LineWidth',HLINEWIDTH)   % plot right ear
         end
         
-        function [x,y] = rotateHeadPlot(thetaRotation, x, y)
+        function [x,y] = rotateScalpPlot(thetaRotation, x, y)
             allcoords = (y + x*sqrt(-1))*exp(sqrt(-1)*thetaRotation);
             x = imag(allcoords);
             y = real(allcoords);
