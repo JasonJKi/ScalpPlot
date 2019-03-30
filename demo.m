@@ -76,8 +76,8 @@ scalpPlot.drawSourcePoints();
 markerHandle1 = scalpPlot.drawOnElectrode(sourceIndex, symbolStr1, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
 colorMapVal = flipud(parula); % Assign colormap scale
 scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
-scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
-scalpPlot.drawMarkerLegend(markerHandle1, {'marker'} ,'southwestoutside');
+scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'eastoutside');  % Draw color bar.
+scalpPlot.drawMarkerLegend(markerHandle1, {'marker'} ,'southoutside');
 
 title('Ex 6: w/ Everything')
 
