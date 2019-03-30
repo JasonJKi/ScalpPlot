@@ -1,6 +1,6 @@
 # HeadPlot
 
-### Headplot is a easy-to-use/customizable plot tool for drawing scalp map's of EEG/MEG data. 
+### Headplot is a easy-to-use/customizable plot tool for drawing scalp maps of EEG/MEG data. 
 
 <p>
     <img src='output/demo.png' width=800 />
