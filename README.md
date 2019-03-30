@@ -8,14 +8,14 @@
 
 ### Motivation
 HeadPlot has been deconstructed from the popular topoplot.m from EEGLab by Schwartz Lab at UCSD. 
-The original code has been cleaned up and refactored for readability and organization. Headplot aims to be user friendly, easy to use
+The original code has been cleaned up and refactored for readability and organization. Headplot aims to be user friendly, easy-to-use
 plot tool for both researchers and developers. All unnecessary depedenecis have been removed from the original topoplot.m for easy transportability.
 
 ### Features
-- No gaps/spaces.
-- Consistent positioning and sizing.
-- Draggable and resizable via MATLAB's plot GUI Tool.
+- Consistent positioning and sizing (no gaps/extra space/constant sizing).
 - Easy to customize labels, colors, etc.
+- Draggable and resizable via MATLAB's plot GUI Tool.
+- Lightweight.
 
 # Getting Started
 ### Installation
