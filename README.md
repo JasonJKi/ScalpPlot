@@ -86,7 +86,7 @@ scalpPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
 scalpPlot.draw(A);
 ```
 ```
-symbolStr = '^'; #'*', 'o', '.', 'x'
+symbolStr = '^'; %'*', 'o', '.', 'x'
 ```
 Any Matlab's markers can be chosen from this list: https://www.mathworks.com/help/matlab/ref/linespec.html
 ```
