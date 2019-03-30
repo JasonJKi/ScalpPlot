@@ -1,6 +1,6 @@
-# HeadPlot
+# ScalpPlot
 
-#### Headplot is a easy-to-use/customizable plot tool for drawing scalp maps of EEG/MEG data in MATLAB. 
+#### ScalpPlot is a easy-to-use/customizable plot tool for drawing scalp maps of EEG/MEG data in MATLAB. 
 
 <p>
     <img src='output/demo.png' width=800 />
@@ -13,8 +13,8 @@
 - Lightweight.
 
 ### Motivation
-HeadPlot has been deconstructed from the popular topoplot.m from EEGLab by Schwartz Lab at UCSD. 
-The original code has been cleaned up and refactored for readability and organization. Headplot aims to be user friendly, easy-to-use
+ScalpPlot has been deconstructed from the popular topoplot.m from EEGLab by Schwartz Lab at UCSD. 
+The original code has been cleaned up and refactored for readability and organization. ScalpPlot aims to be user friendly, easy-to-use
 plot tool for both researchers and developers. All unnecessary depedenecis have been removed from the original topoplot.m for easy transportability.
 
 # Getting Started
@@ -43,8 +43,8 @@ from the link in Green (Clone or Download).
 Instantiate the HeadPlot object once for all headplots. 
 
 ```
-headPlot = HeadPlot(locationFilePath);
-headPlot.setMap();
+scalpPlot = ScalpPlot(locationFilePath);
+scalpPlot.setMap();
 ```
 
 Set plot handle for easy control/customizability
@@ -60,30 +60,30 @@ plotHandle3 = subplot(2,3,6)
 ```
 
 
-#### Ex 1. Draw the default headplot in the first plot.
+#### Ex 1. Draw the default scalpPlot in the first plot.
 ```
-headPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
-headPlot.draw(A); % Draw headplot. A - Some scalp recording data/ forward model/ weights/ dipoles/ etc.
+scalpPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
+scalpPlot.draw(A); % Draw headplot. A - Some scalp recording data/ forward model/ weights/ dipoles/ etc.
 title('Ex 1: default headplot')
 ```
 #### Ex 2. Head plot with contours.
 ```
-headPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
-headPlot.draw(A);
-headPlot.drawHeadContour();
+scalpPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
+scalpPlot.draw(A);
+scalpPlot.drawHeadContour();
 title('Ex 2: w/ contour')
 ```
 #### Ex 3. Head plot with value of source points.
 ```
-headPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
-headPlot.draw(A);
-headPlot.drawSourcePoints();
+scalpPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
+scalpPlot.draw(A);
+scalpPlot.drawSourcePoints();
 title('Ex 3: w/ source location')
 ```
-#### Ex 4. Head plot with specified values on selective source points.
+#### Ex 4. Scalp plot with specified values on selective source points.
 ```
-headPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
-headPlot.draw(A);
+scalpPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
+scalpPlot.draw(A);
 ```
 ```
 symbolStr = '^'; #'*', 'o', '.', 'x'
@@ -91,16 +91,16 @@ symbolStr = '^'; #'*', 'o', '.', 'x'
 Any Matlab's markers can be chosen from this list: https://www.mathworks.com/help/matlab/ref/linespec.html
 ```
 sourceIndex = (rand(1,96) > .5);
-markerHandle1 = headPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
-markerHandle2 = headPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
+markerHandle1 = scalpPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
+markerHandle2 = scalpPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
 handles = [markerHandle1 markerHandle2];
-headPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
+scalpPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')
 ```
 #### Ex5. Head plot with specified colormap and axis.
 ```
-headPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
-headPlot.draw(A);
+scalpPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
+scalpPlot.draw(A);
 ```
 
 ```
@@ -113,14 +113,12 @@ colorAxisRange = [minVal maxVal];
 cAxis = [minVal, mean(A), maxVal];
 cAxisTickLabel = {num2str(minVal, '%0.3f'), '\muV', num2str(maxVal,'%0.3f')};
 
-headPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
-headPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
+scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
+scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 ```
-
-
 
 ## Contact
 Feel free to contact me at (Jason Ki ki.jasonj@gmail.com). 
 
 ## Contributions
-Contribution to headplot is welcomed. 
+Contribution to ScalpPlot is welcomed. 
