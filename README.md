@@ -28,31 +28,36 @@ setup install save
 
 ### Usage
 
-From demo.m
+#### From demo.m
+
+Instantiate the HeadPlot object. 
 
 ```
-% Instantiate the HeadPlot object. 
 headPlot = HeadPlot(locationFilePath);
 headPlot.setMap();
-
-% Ex 1. Draw the default headplot in the first plot.
+'''
+Ex 1. Draw the default headplot in the first plot.
+'''
 headPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
 headPlot.draw(A); % Draw headplot.
 title('Ex 1: default headplot')
-
-% Ex 2. Head plot with contours.
+'''
+Ex 2. Head plot with contours.
+'''
 headPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
 headPlot.draw(A);
 headPlot.drawHeadContour();
 title('Ex 2: w/ contour')
-
-% Ex 3. Head plot with value of source points.
+'''
+Ex 3. Head plot with value of source points.
+'''
 headPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
 headPlot.draw(A);
 headPlot.drawSourcePoints();
 title('Ex 3: w/ source location')
-
-% Ex 4. Head plot with specified values on selective source points.
+'''
+Ex 4. Head plot with specified values on selective source points.
+'''
 headPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
 headPlot.draw(A);
 
@@ -63,8 +68,9 @@ markerHandle2 = headPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 
 handles = [markerHandle1 markerHandle2];
 headPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')
-
-% Ex5. Head plot with specified colormap and axis.
+''''
+Ex5. Head plot with specified colormap and axis.
+'''
 headPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
 headPlot.draw(A);
 
