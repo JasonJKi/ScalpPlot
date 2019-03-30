@@ -79,8 +79,14 @@ Ex 4. Head plot with specified values on selective source points.
 ```
 headPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
 headPlot.draw(A);
+```
+```
+symbolStr = '^'; #'*', 'o', '.', 'x'
+```
+Any of Matlab's markers can be chosen from this list.
+https://www.mathworks.com/help/matlab/ref/linespec.html
 
-symbolStr = '^';
+```
 sourceIndex = (rand(1,96) > .5);
 markerHandle1 = headPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
 markerHandle2 = headPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
@@ -92,9 +98,15 @@ Ex5. Head plot with specified colormap and axis.
 ```
 headPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
 headPlot.draw(A);
+```
 
+```
 colorMapVal = flipud(hot); % Assign colormap scale
+```
+Any of Matlab's custom color maps can be chosen from this list.
+https://www.mathworks.com/help/matlab/ref/colormap.html#buc3wsn-1-map
 
+```
 maxVal = max(A); minVal = min(A); % Set color min and max values.
 colorAxisRange = [minVal maxVal];
 cAxis = [minVal, mean(A), maxVal];
