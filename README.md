@@ -18,6 +18,7 @@ plot tool for both researchers and developers. All unnecessary depedenecis have 
 - Easy to customize labels, colors, etc.
 
 # Getting Started
+### Installation
 - Linux/Windows/Mac
 - MATLAB
 
