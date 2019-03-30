@@ -1,15 +1,15 @@
 # HeadPlot
 
-This is a lightweight/easily customizable plot tool for drawing scalp map's of EEG/MEG data. 
+### Headplot is a easy-to-use/customizable plot tool for drawing scalp map's of EEG/MEG data. 
 
 <p>
     <img src='output/demo.png' width=800 />
 </p>
 
 # Motivation
-The code here is deconstructed version of the popular topoplot.m from EEGLab Schwartz Lab UCSD. 
-The original code has been cleaned up and refactored. Headplot aims to be user friendly, easy to use
-for both researchers and developers. The code has been written to be human readable and easily customizable.
+HeadPlot has been deconstructed from the popular topoplot.m from EEGLab by Schwartz Lab at UCSD. 
+The original code has been cleaned up and refactored for readability and organization. Headplot aims to be user friendly, easy to use
+plot tool for both researchers and developers. It has decluttered and stripped of all unnecessary dependencies required to use topoplot.m
 
 ### Getting Started
 - Linux/Windows/Mac
