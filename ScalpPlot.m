@@ -145,7 +145,7 @@ classdef ScalpPlot < handle
         
         function drawSourcePoints(this)
             value = find(ones(1,length(this.LocationInfo.theta)));
-            drawOnElectrode(this, value, '.', [0 0 0], [0 0 0])
+            drawOnElectrode(this, value, '.', [0 0 0], [0 0 0]);
         end
         
         function markerHandle = drawOnElectrode(this, value, symbolStr, markerColor, markerFaceColor)

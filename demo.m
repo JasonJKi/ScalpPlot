@@ -43,10 +43,11 @@ title('Ex 3: w/ source location')
 scalpPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
 scalpPlot.draw(A);
 
-symbolStr = '^';
+symbolStr1 = '^';
+symbolStr2 = 'x';
 sourceIndex = (rand(1,96) > .5);
-markerHandle1 = scalpPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
-markerHandle2 = scalpPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
+markerHandle1 = scalpPlot.drawOnElectrode(sourceIndex, symbolStr1, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
+markerHandle2 = scalpPlot.drawOnElectrode(~sourceIndex, symbolStr2, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
 handles = [markerHandle1 markerHandle2];
 scalpPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')

@@ -1,7 +1,7 @@
 function setup(str1,str2)
 rootDir = pwd;
+addpath(pwd)
 libsPath = genpath([rootDir '\libs']); % all libs\dependencies live here for this project
-
 if nargin > 0
     
     switch str1
