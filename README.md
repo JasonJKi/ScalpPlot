@@ -12,9 +12,9 @@ The original code has been cleaned up and refactored for readability and organiz
 plot tool for both researchers and developers. All unnecessary depedenecis have been removed from the original topoplot.m for easy transportability.
 
 ### Features
-- No gaps/spaces
-- Consistent positioning and sizing
-- Draggable and resizable via MATLAB's plot GUI Tool
+- No gaps/spaces.
+- Consistent positioning and sizing.
+- Draggable and resizable via MATLAB's plot GUI Tool.
 - Easy to customize labels, colors, etc.
 
 ### Getting Started
