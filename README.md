@@ -57,7 +57,7 @@ plotHandle3 = subplot(1,6,3)
 Ex 1. Draw the default headplot in the first plot.
 ```
 headPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
-headPlot.draw(A); % Draw headplot.
+headPlot.draw(A); % Draw headplot. A - Some scalp recording data.
 title('Ex 1: default headplot')
 ```
 Ex 2. Head plot with contours.
