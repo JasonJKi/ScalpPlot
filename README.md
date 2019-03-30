@@ -40,8 +40,8 @@ from the link in Green (Clone or Download).
 
 #### From demo.m
 
-Instantiate the HeadPlot object once for all headplots. 
-
+Instantiate the HeadPlot object once for all headplots by assigning a location file.
+ScalpPlot is able to read all major EEG/MEG file extensions (.BDF, .LOC, .EGi, etc.)
 ```
 scalpPlot = ScalpPlot(locationFilePath);
 scalpPlot.setMap();
