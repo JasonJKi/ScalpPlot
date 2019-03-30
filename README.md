@@ -83,4 +83,4 @@ headPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 Feel free to contact me at (Jason Ki ki.jasonj@gmail.com). 
 
 ## Contributions
-Contribution to repository is welcomed. 
+Contribution to headplot is welcomed. 
