@@ -117,6 +117,19 @@ scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
 scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 ```
 
+### Ex6. w/Everything
+```
+scalpPlot.setPlotHandle(plotHandle6); % Set plot handle and plot axes
+scalpPlot.draw(A);
+scalpPlot.drawHeadContour();
+scalpPlot.drawSourcePoints();
+markerHandle1 = scalpPlot.drawOnElectrode(sourceIndex, symbolStr1, [.5 .5 0],[1 .5 0]); % plot on siginficnt points
+colorMapVal = flipud(parula); % Assign colormap scale
+scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
+scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
+scalpPlot.drawMarkerLegend(markerHandle1, {'marker'} ,'southwestoutside');
+```
+
 ## Contact
 Feel free to contact me at (Jason Ki ki.jasonj@gmail.com). 
 
