@@ -22,24 +22,24 @@ plotHandle6 = subplot(2,3,6);
 headPlot = HeadPlot(locationFilePath);
 headPlot.setMap();
 
-% 1. Draw the default headplot in the first plot.
+% Ex 1. Draw the default headplot in the first plot.
 headPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
 headPlot.draw(A); % Draw headplot.
-title('default headplot')
+title('Ex 1: default headplot')
 
-% 2. Head plot with contours.
+% Ex 2. Head plot with contours.
 headPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
 headPlot.draw(A);
 headPlot.drawHeadContour();
-title('w/ contour')
+title('Ex 2: w/ contour')
 
-% 3. Head plot with value of source points.
+% Ex 3. Head plot with value of source points.
 headPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
 headPlot.draw(A);
 headPlot.drawSourcePoints();
-title('w/ source location')
+title('Ex 3: w/ source location')
 
-% 4. Head plot with specified values on selective source points.
+% Ex 4. Head plot with specified values on selective source points.
 headPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
 headPlot.draw(A);
 
@@ -49,9 +49,9 @@ markerHandle1 = headPlot.drawOnElectrode(sourceIndex, symbolStr, [.5 .5 0],[1 .5
 markerHandle2 = headPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 .5 1]); % plot on siginficnt points
 handles = [markerHandle1 markerHandle2];
 headPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
-title('w/ specified source markers')
+title('Ex 4: w/ specified source markers')
 
-% 5. Head plot with specified colormap and axis.
+% Ex5. Head plot with specified colormap and axis.
 headPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
 headPlot.draw(A);
 
@@ -65,6 +65,6 @@ cAxisTickLabel = {num2str(minVal, '%0.3f'), '\muV', num2str(maxVal,'%0.3f')};
 headPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
 headPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 
-title('w/ colorbar and alternate color scale')
+title('Ex 5: w/ colorbar and alternate color scale')
 
 print('output/demo','-dpng','-r0');
