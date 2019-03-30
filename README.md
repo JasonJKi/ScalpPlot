@@ -60,7 +60,7 @@ plotHandle3 = subplot(2,3,6)
 ```
 
 
-#### Ex 1. Draw the default scalpPlot in the first plot.
+#### Ex 1. Draw the default scalpPlot in the first subplot as above.
 ```
 scalpPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
 scalpPlot.draw(A); % Draw headplot. A - Some scalp recording data/ forward model/ weights/ dipoles/ etc.
