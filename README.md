@@ -11,6 +11,12 @@ HeadPlot has been deconstructed from the popular topoplot.m from EEGLab by Schwa
 The original code has been cleaned up and refactored for readability and organization. Headplot aims to be user friendly, easy to use
 plot tool for both researchers and developers. All unnecessary depedenecis have been removed from the original topoplot.m for easy transportability.
 
+### Features
+- No gaps/spaces
+- Consistent positioning and sizing
+- Draggable and resizable via MATLAB's plot GUI Tool
+- Easy to customize labels, colors, etc.
+
 ### Getting Started
 - Linux/Windows/Mac
 - MATLAB
@@ -30,34 +36,35 @@ setup install save
 
 #### From demo.m
 
-Instantiate the HeadPlot object. 
+Instantiate the HeadPlot object once for all headplots. 
 
 ```
 headPlot = HeadPlot(locationFilePath);
 headPlot.setMap();
-'''
+```
+
 Ex 1. Draw the default headplot in the first plot.
-'''
+```
 headPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
 headPlot.draw(A); % Draw headplot.
 title('Ex 1: default headplot')
-'''
+```
 Ex 2. Head plot with contours.
-'''
+```
 headPlot.setPlotHandle(plotHandle2); % Set plot handle and plot axes
 headPlot.draw(A);
 headPlot.drawHeadContour();
 title('Ex 2: w/ contour')
-'''
+```
 Ex 3. Head plot with value of source points.
-'''
+```
 headPlot.setPlotHandle(plotHandle3); % Set plot handle and plot axes
 headPlot.draw(A);
 headPlot.drawSourcePoints();
 title('Ex 3: w/ source location')
-'''
+```
 Ex 4. Head plot with specified values on selective source points.
-'''
+```
 headPlot.setPlotHandle(plotHandle4); % Set plot handle and plot axes
 headPlot.draw(A);
 
@@ -68,9 +75,9 @@ markerHandle2 = headPlot.drawOnElectrode(~sourceIndex, symbolStr, [0 .5 .5], [0 
 handles = [markerHandle1 markerHandle2];
 headPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')
-''''
+```
 Ex5. Head plot with specified colormap and axis.
-'''
+```
 headPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
 headPlot.draw(A);
 
@@ -84,6 +91,8 @@ cAxisTickLabel = {num2str(minVal, '%0.3f'), '\muV', num2str(maxVal,'%0.3f')};
 headPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
 headPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 ```
+
+
 
 ## Contact
 Feel free to contact me at (Jason Ki ki.jasonj@gmail.com). 
