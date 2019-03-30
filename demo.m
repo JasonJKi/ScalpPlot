@@ -67,4 +67,4 @@ headPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 
 title('w/ colorbar and alternate color scale')
 
-print('res/demo','-dpng','-r0');
+print('output/demo','-dpng','-r0');
