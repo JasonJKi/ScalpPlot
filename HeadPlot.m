@@ -7,7 +7,7 @@ classdef HeadPlot < handle
         LocationInfo = LocationInfo();
         PlotInfo
         headRadius = .5; % Default headradius to fit the head, nose, ear animation around the map.
-        GridPoints = GridPoints;
+        GridPoints = GridPoints();
         
         plotHandle;
         markerHandle;
