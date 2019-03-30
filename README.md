@@ -17,7 +17,7 @@ plot tool for both researchers and developers. All unnecessary depedenecis have 
 - Draggable and resizable via MATLAB's plot GUI Tool.
 - Easy to customize labels, colors, etc.
 
-### Getting Started
+# Getting Started
 - Linux/Windows/Mac
 - MATLAB
 
