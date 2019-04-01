@@ -28,7 +28,6 @@ classdef ScalpPlot < handle
            
             % Set lcation points for the topoplot.
             setLocationValues(this, xPos, yPos, thetaDegrees, radius, tmpeloc, labels, channelIndex)
-            this.setPlotHandle()
         end
         
         function setMap(this)            
@@ -79,9 +78,6 @@ classdef ScalpPlot < handle
         end
         
         function setPlotHandle(this, plotHandle)
-            if nargin < 2
-                plotHandle = gca;
-            end
             this.plotHandle = plotHandle;
             axes(this.plotHandle)
             this.formatPlotAxes(plotHandle)
@@ -190,7 +186,7 @@ classdef ScalpPlot < handle
         function drawColorBar(this, cAxis, cAxisTickLabel, location)
             
             if nargin < 4
-                location = 'southoutside';
+                location = 'westoutside';
             end
             figurePosition = get(this.plotHandle, 'Position');
             
