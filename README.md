@@ -97,7 +97,7 @@ handles = [markerHandle1 markerHandle2];
 scalpPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')
 ```
-#### Ex5. Head plot with specified colormap and axis.
+#### Ex 5. Head plot with specified colormap and axis.
 ```
 scalpPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
 scalpPlot.draw(A);
@@ -117,7 +117,7 @@ scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
 scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 ```
 
-### Ex6. w/Everything
+#### Ex 6. w/Everything
 ```
 scalpPlot.setPlotHandle(plotHandle6); % Set plot handle and plot axes
 scalpPlot.draw(A);
