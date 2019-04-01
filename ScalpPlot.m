@@ -4,10 +4,10 @@ classdef ScalpPlot < handle
     
     properties
         values
-        LocationInfo = LocationInfo();
+        locationInfo = LocationInfo();
         PlotInfo
         headRadius = .5; % Default headradius to fit the head, nose, ear animation around the map.
-        GridPoints = GridPoints();
+        gridPoints = GridPoints();
         
         plotHandle;
         markerHandle;
@@ -37,45 +37,45 @@ classdef ScalpPlot < handle
             
             % Resize the location values to fit the plot and head radius.
             [xPos, yPos] = this.fitScalpPlotToAxes(xPos, yPos, radius, this.headRadius);
-            this.LocationInfo.xPos = xPos;
-            this.LocationInfo.yPos = yPos;
+            this.locationInfo.xPos = xPos;
+            this.locationInfo.yPos = yPos;
         end
         
         function setLocationValues(this, xPos, yPos, theta, radius, tmpeloc, labels, channelIndex)
             % Assign structure for location points
-            this.LocationInfo.xPos = xPos;
-            this.LocationInfo.yPos = yPos;
-            this.LocationInfo.theta = theta;
-            this.LocationInfo.radius = radius;
-            this.LocationInfo.tmpeloc = tmpeloc;            
-            this.LocationInfo.channelLabels = char(labels); % make a label string matrix            
-            this.LocationInfo.channelIndex = channelIndex;
+            this.locationInfo.xPos = xPos;
+            this.locationInfo.yPos = yPos;
+            this.locationInfo.theta = theta;
+            this.locationInfo.radius = radius;
+            this.locationInfo.tmpeloc = tmpeloc;            
+            this.locationInfo.channelLabels = char(labels); % make a label string matrix            
+            this.locationInfo.channelIndex = channelIndex;
         end
         
         function [xPos, yPos, radius, theta, tmpeloc, channelLabels, channelIndex] = ... 
                 getLocationValues(this)
             % Assign structure for location points
-            xPos = this.LocationInfo.xPos;
-            yPos = this.LocationInfo.yPos;
-            theta = this.LocationInfo.theta;
-            radius = this.LocationInfo.radius;
-            tmpeloc = this.LocationInfo.tmpeloc;            
-            channelLabels = this.LocationInfo.channelLabels;           
-            channelIndex = this.LocationInfo.channelIndex ;
+            xPos = this.locationInfo.xPos;
+            yPos = this.locationInfo.yPos;
+            theta = this.locationInfo.theta;
+            radius = this.locationInfo.radius;
+            tmpeloc = this.locationInfo.tmpeloc;            
+            channelLabels = this.locationInfo.channelLabels;           
+            channelIndex = this.locationInfo.channelIndex ;
         end
         
-        function setScalpPlotGridPoints(this, x, y, z, delta)
-            this.GridPoints.x = x;
-            this.GridPoints.y = y;
-            this.GridPoints.z = z;
-            this.GridPoints.delta = delta;
+        function setScalpPlotgridPoints(this, x, y, z, delta)
+            this.gridPoints.x = x;
+            this.gridPoints.y = y;
+            this.gridPoints.z = z;
+            this.gridPoints.delta = delta;
         end
         
-        function [x, y, z, delta] = getGridPoints(this)
-            x = this.GridPoints.x;
-            y = this.GridPoints.y;
-            z = this.GridPoints.z;
-            delta = this.GridPoints.delta;
+        function [x, y, z, delta] = getgridPoints(this)
+            x = this.gridPoints.x;
+            y = this.gridPoints.y;
+            z = this.gridPoints.z;
+            delta = this.gridPoints.delta;
         end
         
         function setPlotHandle(this, plotHandle)
@@ -119,17 +119,17 @@ classdef ScalpPlot < handle
             else
                 return
             end
-            [x, y, z, delta] = getGridPoints(this);
+            [x, y, z, delta] = getgridPoints(this);
             this.surfaceHandle = this.drawInterpolatedHead(x, y, z, delta);
         end
         
         function setHeadMapValues(this, values)
                 this.values = values;
-                xPos = this.LocationInfo.xPos;
-                yPos = this.LocationInfo.yPos;
+                xPos = this.locationInfo.xPos;
+                yPos = this.locationInfo.yPos;
             
                 [x, y, z, delta] = this.createHeadSurfaceMap(xPos, yPos, values, this.headRadius);
-                setScalpPlotGridPoints(this, x, y, z, delta);        
+                setScalpPlotgridPoints(this, x, y, z, delta);        
         end            
         
         function drawHeadContour(this, values)
@@ -138,13 +138,13 @@ classdef ScalpPlot < handle
             end
             
             if ~isempty(this.values)             
-                [x, y, z, ~] = getGridPoints(this);
+                [x, y, z, ~] = getgridPoints(this);
                 this.drawContour(x, y, z);
             end
         end
         
         function drawSourcePoints(this)
-            value = find(ones(1,length(this.LocationInfo.theta)));
+            value = find(ones(1,length(this.locationInfo.theta)));
             drawOnElectrode(this, value, '.', [0 0 0], [0 0 0]);
         end
         
