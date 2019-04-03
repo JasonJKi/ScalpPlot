@@ -1,11 +1,13 @@
 function setup(str1,str2)
 rootDir = pwd;
 addpath(pwd)
-libsPath = genpath([rootDir '\libs']); % all libs\dependencies live here for this project
+srcPath = genpath([rootDir '/src']); % all libs\dependencies live here for this project
+libsPath = genpath([rootDir '/libs']); % all libs\dependencies live here for this project
 if nargin > 0
     
     switch str1
         case 'install'
+            addpath(srcPath, '-begin');
             addpath(libsPath, '-begin');
             disp('Successfully added libs to path.')
             statusStr = [str1 'ed'];
