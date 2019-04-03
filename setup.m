@@ -1,8 +1,8 @@
 function setup(str1,str2)
 rootDir = pwd;
 addpath(pwd)
-srcPath = genpath([rootDir '/src']); % all libs\dependencies live here for this project
-libsPath = genpath([rootDir '/libs']); % all libs\dependencies live here for this project
+srcPath = genpath([rootDir '/src']); % all src live here for this project
+libsPath = genpath([rootDir '/libs']); % all libs/dependencies live here for this project
 if nargin > 0
     
     switch str1

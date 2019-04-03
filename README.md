@@ -24,15 +24,15 @@ plot tool for both researchers and developers. All unnecessary depedenecis have 
 
 1) On any Operating System's command prompt.
 ```
->> git clone https://github.com/JasonJKi/HeadPlot.git
->> cd HeadPlot
+>> git clone https://github.com/JasonJKi/ScalpPlot.git
+>> cd ScalpPlot
 ```
 or download 
 from the link in Green (Clone or Download).
 
 2) In matlab command window.
 ```
->> cd HeadPlot
+>> cd ScalpPlot
 >> setup install save # save argument will permanently add ScalPlot dir and it's subdirectories to path.
 ```
 
@@ -40,7 +40,7 @@ from the link in Green (Clone or Download).
 
 #### From demo.m
 
-Instantiate the HeadPlot object once for all headplots by assigning a location file.
+Instantiate the ScalpPlot object once for all ScalpPlots by assigning a location file.
 ScalpPlot is able to read all major EEG/MEG file extensions (.BDF, .LOC, .EGi, etc.)
 ```
 scalpPlot = ScalpPlot(locationFilePath);
@@ -97,7 +97,7 @@ handles = [markerHandle1 markerHandle2];
 scalpPlot.drawMarkerLegend(handles, {'marker 1', 'marker 2'} ,'southwestoutside');
 title('Ex 4: w/ specified source markers')
 ```
-#### Ex5. Head plot with specified colormap and axis.
+#### Ex 5. Head plot with specified colormap and axis.
 ```
 scalpPlot.setPlotHandle(plotHandle5); % Set plot handle and plot axes
 scalpPlot.draw(A);
@@ -117,7 +117,7 @@ scalpPlot.setColorAxis(colorAxisRange, colorMapVal); % Set color scale.
 scalpPlot.drawColorBar(cAxis, cAxisTickLabel, 'southoutside');  % Draw color bar.
 ```
 
-### Ex6. w/Everything
+#### Ex 6. w/Everything
 ```
 scalpPlot.setPlotHandle(plotHandle6); % Set plot handle and plot axes
 scalpPlot.draw(A);
