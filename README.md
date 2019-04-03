@@ -36,7 +36,7 @@ from the link in Green (Clone or Download).
 >> setup install save # save argument will permanently add ScalPlot dir and it's subdirectories to path.
 ```
 
-### Usage
+# Usage
 
 #### From demo.m
 
