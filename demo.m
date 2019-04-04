@@ -7,7 +7,7 @@ data = load(demoDataPath, 'scalActivity');
 A = data.scalActivity(:,1); % Forward model.
 
 % Set location file filepath.
-locationFilePath = 'res/96_EEG.loc';
+locationFilepath = 'res/96_EEG.loc';
 
 % Demonstration of customizable headplot.
 figure(1);clf
@@ -18,9 +18,17 @@ plotHandle4 = subplot(2,3,4);
 plotHandle5 = subplot(2,3,5);
 plotHandle6 = subplot(2,3,6); 
 
-% Instantiate the HeadPlot object. 
-scalpPlot = ScalpPlot(locationFilePath);
-scalpPlot.setMap();
+% Instantiate the HeadPlot object using eeglab's readloc.
+locationInfo = readLocationFile(LocationInfo(), locationFilepath);
+
+% If using custom source positions
+% locationInfo = setCarteisianCoorPos(LocationInfo(), xPos, yPos)
+% locationInfo = setPolarCoorPos(LocationInfo(), theta, radius, isRadian)
+% isRadian - boolean (true or false). Indicate true if theta is in radians.
+% Default (False)
+
+% Start ScalpPlot via setting location info of the scalp sources.
+scalpPlot = ScalpPlot(locationInfo);
 
 % Ex 1. Draw the default headplot in the first plot.
 scalpPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
