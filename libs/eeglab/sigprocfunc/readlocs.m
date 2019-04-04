@@ -1,4 +1,4 @@
-function [eloc, labels, theta, radius, indices] = readLocationFile(filename, varargin); 
+function [eloc, labels, theta, radius, indices] = readlocs(filename, varargin); 
 
 if nargin < 1
 	help readlocs;
