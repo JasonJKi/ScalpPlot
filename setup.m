@@ -2,20 +2,20 @@ function setup(str1,str2)
 rootDir = pwd;
 addpath(pwd)
 srcPath = genpath([rootDir '/src']); % all src live here for this project
-libsPath = genpath([rootDir '/libs']); % all libs/dependencies live here for this project
+libsPath = genpath([rootDir '/lib']); % all libs/dependencies live here for this project
 if nargin > 0
     
     switch str1
         case 'install'
             addpath(srcPath, '-begin');
             addpath(libsPath, '-begin');
-            disp('Successfully added libs to path.')
+            disp('Successfully added package to path.')
             statusStr = [str1 'ed'];
 
         case 'remove'
             warning('off')
             rmpath(libsPath);
-            disp('Successfully removed libs from path.')
+            disp('Successfully removed package from path.')
             warning('on')
             statusStr = [str1 'd'];
 
