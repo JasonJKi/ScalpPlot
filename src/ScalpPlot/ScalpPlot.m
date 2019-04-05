@@ -86,6 +86,9 @@ classdef ScalpPlot < handle
             
             [x, y, z, delta] = getgridPoints(this);
             this.drawInterpolatedHead(x, y, z, delta);
+            
+            xlim([-.6 .6])
+            ylim([-.6 .6])
         end
         
         function setHeadMapValues(this, values, xPos, yPos)
