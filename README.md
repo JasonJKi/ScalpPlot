@@ -3,7 +3,7 @@
 #### ScalpPlot is a easy-to-use/customizable plot tool for drawing scalp maps of EEG/MEG data in MATLAB. 
 
 <p>
-    <img src='output/demo.png' width=800 />
+    <img src='output/demo.png' width=1000 />
 </p>
 
 ### Features
