@@ -43,7 +43,7 @@ classdef LocationInfo < handle
         
         function this = readLocationFile(this, locationFilepath)
          % Read location file for channel position relative to the scalp.
-            [tmpeloc, labels, theta, radius, channelIndex] = readLocationFile(locationFilepath);
+            [tmpeloc, labels, theta, radius, channelIndex] = readlocs(locationFilepath);
             
             % Transform the position from polar to cartesian coordinate.            
             [xPos, yPos, thetaDegrees] = this.convertToCartesian(theta, radius, true);
