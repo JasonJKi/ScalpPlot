@@ -63,7 +63,10 @@ classdef ScalpPlot < handle
         
         function setPlotHandle(this, plotHandle)
             this.plotHandle = plotHandle;
-            axes(this.plotHandle)
+        end
+        
+        function setAxes(this, plotHandle)
+            axes(plotHandle)            
             this.formatPlotAxes(plotHandle)
             hold(plotHandle);
             colormap(plotHandle, 'jet')
@@ -76,6 +79,12 @@ classdef ScalpPlot < handle
         function draw(this, values)
             if nargin < 2
                 values = this.values;
+            end
+            
+            if isempty(this.plotHandle)
+                setAxes(this, gca)
+            else
+                setAxes(this, this.plotHandle)
             end
 
             this.drawMaskHeadRing(this.headRadius);
