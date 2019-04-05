@@ -42,12 +42,26 @@ from the link in Green (Clone or Download).
 
 Instantiate the ScalpPlot object once for all ScalpPlots by assigning a location file.
 ScalpPlot is able to read all major EEG/MEG file extensions (.BDF, .LOC, .EGi, etc.)
+
+1a) Instantiate the HeadPlot object using eeglab's readloc.
 ```
-scalpPlot = ScalpPlot(locationFilePath);
-scalpPlot.setMap();
+locationInfo = readLocationFile(LocationInfo(), locationFilepath);
 ```
 
-Set plot handle for easy control/customizability
+2b) Method for creating loction info without a location file.
+```
+% locationInfo = setCarteisianCoorPos(LocationInfo(), xPos, yPos)
+% locationInfo = setPolarCoorPos(LocationInfo(), theta, radius, isRadian)
+% isRadian - boolean (true or false). Indicate true if theta is in radians.
+% Default (False)
+```
+
+3) Instantiate ScalpPlot via setting location info of the scalp sources.
+```
+scalpPlot = ScalpPlot(locationInfo);
+```
+
+Optional) Set plot handle for easy control/customizability
 ```
 plotHandle1 = subplot(2,3,1)
 plotHandle2 = subplot(2,3,2)
@@ -59,7 +73,7 @@ plotHandle3 = subplot(2,3,6)
 
 ```
 
-
+4) Drawing instructions.
 #### Ex 1. Draw the default scalpPlot in the first subplot as above.
 ```
 scalpPlot.setPlotHandle(plotHandle1); % Set plot handle and plot axes
