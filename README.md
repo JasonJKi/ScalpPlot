@@ -50,10 +50,10 @@ locationInfo = readLocationFile(LocationInfo(), locationFilepath);
 
 2b) Method for creating loction info without a location file.
 ```
-% locationInfo = setCarteisianCoorPos(LocationInfo(), xPos, yPos)
-% locationInfo = setPolarCoorPos(LocationInfo(), theta, radius, isRadian)
-% isRadian - boolean (true or false). Indicate true if theta is in radians.
-% Default (False)
+
+locationInfo = setCarteisianCoorPos(LocationInfo(), xPos, yPos)
+
+locationInfo = setPolarCoorPos(LocationInfo(), theta, radius, isRadian); #isRadian - boolean (true or false). Indicate true if theta is in radians. Default (False)
 ```
 
 3) Instantiate ScalpPlot via setting location info of the scalp sources.
