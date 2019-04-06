@@ -48,7 +48,7 @@ ScalpPlot is able to read all major EEG/MEG file extensions (.BDF, .LOC, .EGi, e
 locationInfo = readLocationFile(LocationInfo(), locationFilepath);
 ```
 
-2b) Method for creating loction info without a location file.
+1b) Method for creating loction info without a location file.
 ```
 
 locationInfo = setCarteisianCoorPos(LocationInfo(), xPos, yPos)
@@ -56,7 +56,7 @@ locationInfo = setCarteisianCoorPos(LocationInfo(), xPos, yPos)
 locationInfo = setPolarCoorPos(LocationInfo(), theta, radius, isRadian); #isRadian - boolean (true or false). Indicate true if theta is in radians. Default (False)
 ```
 
-3) Instantiate ScalpPlot via setting location info of the scalp sources.
+2) Instantiate ScalpPlot via setting location info of the scalp sources.
 ```
 scalpPlot = ScalpPlot(locationInfo);
 ```
