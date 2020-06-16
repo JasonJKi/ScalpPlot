@@ -3,28 +3,28 @@ classdef LocationInfo < handle
     %   Detailed explanation goes here
     
     properties
-        xPos
-        yPos
+        x_pos
+        y_pos
         theta
         radius
-        tmpeloc
-        channelLabels
-        channelIndex
+        tmp_loc
+        channel_labels
+        channel_index
     end
     
     methods
         
-        function this = LocationInfo(theta, radius, tmpeloc, labels, channelIndex)
+        function this = LocationInfo(theta, radius, tmp_loc, labels, channel_index)
             if nargin < 1
                 return
             end
-            [xPos, yPos, thetaDegrees] = this.convertToCartesian(theta, radius);
-            setLocationInfo(this, xPos, yPos, thetaDegrees, radius, tmpeloc, labels, channelIndex)
+            [x_pos, y_pos, theta_degrees] = this.convertToCartesian(theta, radius);
+            setLocationInfo(this, x_pos, y_pos, theta_degrees, radius, tmp_loc, labels, channel_index)
         end
         
-        function this = setCarteisianCoorPos(this, xPos, yPos)
-            this.xPos = xPos;
-            this.yPos = yPos;
+        function this = setCarteisianCoorPos(this, x_pos, y_pos)
+            this.x_pos = x_pos;
+            this.y_pos = y_pos;
         end
         
         function this = setPolarCoordPos(this, theta, radius, isRadian)
@@ -32,8 +32,8 @@ classdef LocationInfo < handle
                 isRadian = false;
             end
             
-            [xPos, yPos, theta] = this.convertToCartesian(theta, radius, isRadian);
-            setCarteisianCoorPos(this, xPos, yPos);
+            [x_pos, y_pos, theta] = this.convertToCartesian(theta, radius, isRadian);
+            setCarteisianCoorPos(this, x_pos, y_pos);
             this.theta = theta;
             this.radius = radius;
         end
@@ -43,49 +43,49 @@ classdef LocationInfo < handle
         
         function this = readLocationFile(this, locationFilepath)
          % Read location file for channel position relative to the scalp.
-            [tmpeloc, labels, theta, radius, channelIndex] = readlocs(locationFilepath);
+            [tmp_loc, labels, theta, radius, channel_index] = readlocs(locationFilepath);
             
             % Transform the position from polar to cartesian coordinate.            
-            [xPos, yPos, thetaDegrees] = this.convertToCartesian(theta, radius, true);
+            [x_pos, y_pos, theta_degrees] = this.convertToCartesian(theta, radius, true);
             
-            setLocationInfo(this, xPos, yPos, thetaDegrees, radius, tmpeloc, labels, channelIndex);
+            setLocationInfo(this, x_pos, y_pos, theta_degrees, radius, tmp_loc, labels, channel_index);
         end
         
-        function setLocationInfo(this, xPos, yPos, theta, radius, tmpeloc, labels, channelIndex)
+        function setLocationInfo(this, x_pos, y_pos, theta, radius, tmp_loc, labels, channel_index)
             % Assign structure for location points
             this.theta = theta;
             this.radius = radius;
-            this.xPos = xPos;
-            this.yPos = yPos;
+            this.x_pos = x_pos;
+            this.y_pos = y_pos;
             if nargin > 4
-                this.tmpeloc = tmpeloc;
-                this.channelLabels = char(labels); % make a label string matrix
-                this.channelIndex = channelIndex;
+                this.tmp_loc = tmp_loc;
+                this.channel_labels = char(labels); % make a label string matrix
+                this.channel_index = channel_index;
             end
         end
         
-        function [xPos, yPos, radius, theta, tmpeloc, channelLabels, channelIndex] = ...
+        function [x_pos, y_pos, radius, theta, tmp_loc, channel_labels, channel_index] = ...
                 getLocationValues(this)
             % Assign structure for location points
-            xPos = this.xPos;
-            yPos = this.yPos;
+            x_pos = this.x_pos;
+            y_pos = this.y_pos;
             theta = this.theta;
             radius = this.radius;
-            tmpeloc = this.tmpeloc;
-            channelLabels = this.channelLabels;
-            channelIndex = this.channelIndex ;
+            tmp_loc = this.tmp_loc;
+            channel_labels = this.channel_labels;
+            channel_index = this.channel_index ;
         end
         
     end
     
     methods (Static)
-        function [xPos, yPos, theta] = convertToCartesian(theta, radius, isRadian)
+        function [x_pos, y_pos, theta] = convertToCartesian(theta, radius, isRadian)
             % Convert degrees to radians.
             if isRadian
                 theta = pi/180*theta;
             end
             % Transform electrode locations from polar to cartesian coordinate.
-            [xPos, yPos] = pol2cart(theta, radius);
+            [x_pos, y_pos] = pol2cart(theta, radius);
         end
     end
 end

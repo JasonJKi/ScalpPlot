@@ -3,12 +3,15 @@ rootDir = pwd;
 addpath(pwd)
 srcPath = genpath([rootDir '/src']); % all src live here for this project
 libsPath = genpath([rootDir '/lib']); % all libs/dependencies live here for this project
+resPath = genpath([rootDir '/res']); % all libs/dependencies live here for this project
+
 if nargin > 0
     
     switch str1
         case 'install'
             addpath(srcPath, '-begin');
             addpath(libsPath, '-begin');
+             addpath(resPath, '-begin');
             disp('Successfully added package to path.')
             statusStr = [str1 'ed'];
 

@@ -13,8 +13,8 @@ classdef ScalpPlot < handle
         surfaceHandle = [];
 
         locationInfo = LocationInfo();
-        xPos
-        yPos
+        x_pos
+        y_pos
     end
 
     methods
@@ -30,21 +30,21 @@ classdef ScalpPlot < handle
         function setMap(this, locationInfo)
             this.locationInfo = locationInfo.getLocationInfo();
             % Get position of the scalp.
-            [xPos_, yPos_, radius] = this.locationInfo.getLocationValues();
+            [x_pos, y_pos, radius] = this.locationInfo.getLocationValues();
             
             % Resize the location values to fit the plot and head radius.
-            [xPosResized, yPosResized] = this.fitScalpPlotToAxes(xPos_, yPos_, radius, this.headRadius);
-            setPlotXYPositions(this, xPosResized, yPosResized)
+            [x_pos,  y_pos] = this.fitScalpPlotToAxes(x_pos, y_pos, radius, this.headRadius);
+            setPlotXYPositions(this, x_pos, y_pos)
         end
         
-        function setPlotXYPositions(this, xPos, yPos)
-            this.xPos = xPos;
-            this.yPos = yPos;
+        function setPlotXYPositions(this, x_pos, y_pos)
+            this.x_pos = x_pos;
+            this.y_pos = y_pos;
         end
         
-        function [xPos, yPos] = getPlotXYPositions(this)
-            xPos = this.xPos;
-            yPos = this.yPos;
+        function [x_pos, y_pos] = getPlotXYPositions(this)
+            x_pos = this.x_pos;
+            y_pos = this.y_pos;
         end
                 
         function setPlotGridPoints(this, x, y, z, delta)
@@ -90,8 +90,8 @@ classdef ScalpPlot < handle
             this.drawMaskHeadRing(this.headRadius);
             this.drawNoseAndEars(this.headRadius);
             
-            [xPos_, yPos_] = getPlotXYPositions(this);            
-            setHeadMapValues(this, values, xPos_, yPos_);
+            [x_pos, y_pos] = getPlotXYPositions(this);            
+            setHeadMapValues(this, values, x_pos, y_pos);
             
             [x, y, z, delta] = getgridPoints(this);
             this.drawInterpolatedHead(x, y, z, delta);
@@ -100,15 +100,15 @@ classdef ScalpPlot < handle
             ylim([-.6 .6])
         end
         
-        function setHeadMapValues(this, values, xPos, yPos)
+        function setHeadMapValues(this, values, x_pos, y_pos)
                 this.values = values;            
-                [x, y, z, delta] = this.createHeadSurfaceMap(xPos, yPos, values, this.headRadius);
+                [x, y, z, delta] = this.createHeadSurfaceMap(x_pos, y_pos, values, this.headRadius);
                 setPlotGridPoints(this, x, y, z, delta);        
         end
         
-        function drawHeadContour(this, values, xPos, yPos)
+        function drawHeadContour(this, values, x_pos, y_pos)
             if nargin > 1
-                setHeadMapValues(this, values, xPos, yPos)
+                setHeadMapValues(this, values, x_pos, y_pos)
             end
             
             if ~isempty(this.values)             
@@ -135,9 +135,9 @@ classdef ScalpPlot < handle
                 markerFaceColor = [.8 .8 .8];
             end
             
-            markIndex = value;
-           [xPos_, yPos_] = this.getPlotXYPositions();
-            markerHandle = plot(xPos_(markIndex), yPos_(markIndex), symbolStr, 'MarkerEdgeColor', ...
+            chanel_index = value;
+            [x_pos,  y_pos] = this.getPlotXYPositions();
+            markerHandle = plot(y_pos(chanel_index), x_pos(chanel_index),symbolStr, 'MarkerEdgeColor', ...
                 markerColor , 'MarkerSize', 7, 'MarkerFaceColor', markerFaceColor);
         end
         
@@ -179,19 +179,19 @@ classdef ScalpPlot < handle
     end
     
     methods (Static)
-        function [xPos, yPos, radius, resizRatio, maxLocRadius] = fitScalpPlotToAxes(xPos, yPos, radius, radiusMax)
+        function [x_pos, y_pos, radius, resizRatio, maxLocRadius] = fitScalpPlotToAxes(x_pos, y_pos, radius, radiusMax)
             maxLocRadius = min(1.0,max(radius)*1.02);            % default: just outside the outermost electrode location
             maxLocRadius = max(maxLocRadius,0.5);
             
             resizRatio = radiusMax/maxLocRadius;
             
             radius = radius * resizRatio;
-            xPos = xPos * resizRatio;
-            yPos = yPos * resizRatio;
+            x_pos = x_pos * resizRatio;
+            y_pos = y_pos * resizRatio;
             
         end
         
-        function [X, Y, Z, delta] = createHeadSurfaceMap(xPos, yPos, values, headRadius)
+        function [X, Y, Z, delta] = createHeadSurfaceMap(x_pos, y_pos, values, headRadius)
             % Create grid data for the plot location.
             xmin = -headRadius; xmax = headRadius;
             ymin = -headRadius; ymax = headRadius;
@@ -201,7 +201,7 @@ classdef ScalpPlot < handle
             yi = linspace(ymin, ymax, GRID_SCALE);   % y-axis description (row vector)
             delta = xi(2) - xi(1); % length of grid entry
 
-            [X, Y, Z] = griddata(yPos, xPos, double(values), yi', xi, 'v4'); % interpolate data
+            [X, Y, Z] = griddata(y_pos, x_pos, double(values), yi', xi, 'v4'); % interpolate data
             
             % Create a mask areas outside the head
             mask = (sqrt(X.^2 + Y.^2) <= headRadius); % mask outside the plotting circle
